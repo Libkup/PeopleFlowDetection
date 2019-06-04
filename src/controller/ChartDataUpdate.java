@@ -1,27 +1,24 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class PeopleCount
+ * Servlet implementation class ChartDataUpdate
  */
-@WebServlet("/PeopleCount")
-public class PeopleCount extends HttpServlet {
+@WebServlet("/ChartDataUpdate")
+public class ChartDataUpdate extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private static int count = 1;
-    private static int a = 10000;
+	private static int[] data1 = {100,100,100,100,100,100,100};
+    private static int[] data2 = {10,10,10,10,10,10,10}; 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PeopleCount() {
+    public ChartDataUpdate() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,12 +28,22 @@ public class PeopleCount extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-//		PrintWriter out = response.getWriter();
-//		out.write();
-//        out.flush();
-//        out.close();
-        response.getWriter().print(count++ + "," + a--);
-        System.out.println(count + "," + a);
+		String whichChart = request.getParameter("which");
+		String datas = "";
+		if(whichChart != null && whichChart.equals("1")){
+			for(int i = 0;i < data1.length-1; i++){
+				datas = datas + data1[i] +",";
+			}
+			datas= datas + data1[data1.length-1];
+			response.getWriter().print(datas);
+		}else if(whichChart != null && whichChart.equals("2")){
+			for(int i = 0;i < data2.length-1; i++){
+				datas = datas + data2[i] +",";
+			}
+			datas= datas + data2[data2.length-1];
+			response.getWriter().print(datas);
+		}
+		
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 

@@ -1,9 +1,41 @@
 /*global $, document*/
+var LINECHART1
+var lineChart1
+var LINECHART2
+var lineChart2
+function updateChart1(x) {
+	$.ajax({
+		type : 'GET', // 请求类型, 默认为 GET
+		url : "ChartDataUpdate", // 	必需。规定把请求发送到哪个 URL。
+		data:{which: "1"},
+		success : function(result) { // 可选。请求成功时执行的回调函数。
+			var datas = result.split(",");
+			for(i = 0; i < datas.length; i++){
+				lineChart1.data.datasets[0].data[i] = datas[i];
+			}
+		}
+	});
+	lineChart1.update();
+};
+setInterval('updateChart1()', 500);
+function updateChart2(x) {
+	$.ajax({
+		type : 'GET', // 请求类型, 默认为 GET
+		url : "ChartDataUpdate", // 	必需。规定把请求发送到哪个 URL。
+		data:{which: "2"},
+		success : function(result) { // 可选。请求成功时执行的回调函数。
+			var datas = result.split(",");
+			for(i = 0; i < datas.length; i++){
+				lineChart2.data.datasets[0].data[i] = datas[i];
+			}
+		}
+	});
+	lineChart2.update();
+};
+setInterval('updateChart2()', 500);
 $(document).ready(function () {
 
     'use strict';
-
-
     // ------------------------------------------------------- //
     // Charts Gradients
     // ------------------------------------------------------ //
@@ -20,8 +52,8 @@ $(document).ready(function () {
     // ------------------------------------------------------- //
     // Line Chart
     // ------------------------------------------------------ //
-    var LINECHARTEXMPLE   = $('#lineChartExample');
-    var lineChartExample = new Chart(LINECHARTEXMPLE, {
+    LINECHART1 = $('#lineChart1');
+    lineChart1 = new Chart(LINECHART1, {
         type: 'line',
         options: {
             legend: {labels:{fontColor:"#777", fontSize: 12}},
@@ -41,7 +73,7 @@ $(document).ready(function () {
             },
         },
         data: {
-            labels: ["January", "February", "March", "April", "May", "June", "July"],
+            labels: ["10分钟前", "8分钟前", "6分钟前", "4分钟前", "2分钟前", "现在", "预测两分钟后"],
             datasets: [
                 {
                     label: "人流量",
@@ -93,8 +125,10 @@ $(document).ready(function () {
         }
     });
 
-    var LINECHARTEXMPLELBK   = $('#lineChartExamplelbk');
-    var lineChartExamplelbk = new Chart(LINECHARTEXMPLELBK, {
+	
+	
+    LINECHART2  = $('#lineChart2');
+    lineChart2 = new Chart(LINECHART2, {
         type: 'line',
         options: {
             legend: {labels:{fontColor:"#777", fontSize: 12}},
@@ -114,7 +148,7 @@ $(document).ready(function () {
             },
         },
         data: {
-            labels: ["January", "February", "March", "April", "May", "June", "July"],
+        	labels: ["10分钟前", "8分钟前", "6分钟前", "4分钟前", "2分钟前", "现在", "预测两分钟后"],
             datasets: [
                 {
                     label: "人流量",

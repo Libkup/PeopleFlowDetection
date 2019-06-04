@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
   <head>
@@ -184,7 +184,7 @@
                   <div class="right-col col-lg-6 d-flex align-items-center">
                     <div class="time">
                       <i class="fa fa-clock-o"></i>
-                      <span id="cg" class="hidden-sm-down">2016 / 12 / 21 上午12:00:00</span>
+                      <span id="cg" class="hidden-sm-down">2016 / 12 / 21上午12:00:00</span>
                     </div>
                     <div class="project-progress">
                       <div class="progress">
@@ -200,29 +200,38 @@
                 <div class="statistics col-lg-2 col-12">
                   <div class="statistic d-flex align-items-center bg-white has-shadow">
                     <div class="icon bg-red"><i class="fa fa-tasks"></i></div>
-                    <div class="text"><strong>234</strong><br><small>历史最高人数</small></div>
+                    <div class="text"><strong id="Camera1historyHighest">234</strong><br><small>历史最高人数</small></div>
                   </div>
                   <div class="statistic d-flex align-items-center bg-white has-shadow">
                     <div class="icon bg-green"><i class="fa fa-calendar-o"></i></div>
-                    <div class="text"><strong>152</strong><br><small>近一小时最高人数</small></div>
+                    <div class="text"><strong id="Camera1hourHighest">152</strong><br><small>近一小时最高人数</small></div>
                   </div>
                   <div class="statistic d-flex align-items-center bg-white has-shadow">
                     <div class="icon bg-orange"><i class="fa fa-paper-plane-o"></i></div>
-                    <div class="text"><strong>147</strong><br><small>目前人数</small></div>
+                    <div class="text"><strong id="Camera1currentCount">147</strong><br><small>当前人数</small></div>
                   </div>
                   <div class="statistic d-flex align-items-center bg-white has-shadow">
                     <div class="icon bg-blue"><i class="fa fa-circle-thin"></i></div>
-                    <div class="text"><strong>147</strong><br><small>预测未来5分钟内人数</small></div>
+                    <div class="text"><strong id="Camera1prediction">147</strong><br><small>预测未来5分钟内人数</small></div>
                   </div>
+                  <div class="articles card">
+                  	<div class="card-body no-padding">
+                      <div class="item d-flex align-items-center">
+                        <div class="image"><img src="img/avatar-1.jpg" alt="..." class="img-fluid rounded-circle"></div>
+                        <div class="text"><a href="#">
+                            <h3 class="h5">Security Officer</h3></a><small>Tel: 123456789</small></div>
+                      </div>
+                     </div>
+                   </div>
                 </div>
                 <!-- Line Chart            -->
                 <div class="chart col-lg-5 col-12">
                   <div class="line-chart bg-white d-flex align-items-center justify-content-center has-shadow">
                     <!-- <canvas id="lineCahrt"></canvas> -->
                     
-                    <video id="my-video" class="video-js" controls preload="auto" width="600" height="400" poster="img/mockup1.jpg"
+                    <video id="my-video1" class="video-js" controls preload="auto" width="600" height="400" poster="img/mockup1.jpg"
                       data-setup="{}">
-                      <source src="rtmp://192.168.43.165:1935/live/home" type="rtmp/flv"> </p>
+                      <source src="rtmp://localhost:1935/live/home" type="rtmp/flv"> </p>
                     </video>
                   </div>
                 </div>
@@ -239,7 +248,7 @@
                       <h3 class="h4">近十分钟人流量</h3>
                     </div>
                     <div class="card-body">
-                      <canvas id="lineChartExample"></canvas>
+                      <canvas id="lineChart1"></canvas>
                     </div>
                   </div>
                 </div>
@@ -267,7 +276,7 @@
                   </div>
                   <div class="right-col col-lg-6 d-flex align-items-center">
                     <div class="time">
-                      <i class="fa fa-clock-o"></i><span id="cg2" class="hidden-sm-down">2016 / 12 / 21 上午12:00:00</span>
+                      <i class="fa fa-clock-o"></i><span id="cg2" class="hidden-sm-down">2016 / 12 / 21 ä¸å12:00:00</span>
                     </div>
                     
                     <div class="project-progress">
@@ -284,29 +293,38 @@
                 <div class="statistics col-lg-2 col-12">
                   <div class="statistic d-flex align-items-center bg-white has-shadow">
                     <div class="icon bg-red"><i class="fa fa-tasks"></i></div>
-                    <div class="text"><strong>234</strong><br><small>历史最高人数</small></div>
+                    <div class="text"><strong id="Camera2historyHighest">234</strong><br><small>历史最高人数</small></div>
                   </div>
                   <div class="statistic d-flex align-items-center bg-white has-shadow">
                     <div class="icon bg-green"><i class="fa fa-calendar-o"></i></div>
-                    <div class="text"><strong>152</strong><br><small>近一小时最高人数</small></div>
+                    <div class="text"><strong id="Camera2hourHighest">152</strong><br><small>近一小时最高人数</small></div>
                   </div>
                   <div class="statistic d-flex align-items-center bg-white has-shadow">
                     <div class="icon bg-orange"><i class="fa fa-paper-plane-o"></i></div>
-                    <div class="text"><strong>147</strong><br><small>目前人数</small></div>
+                    <div class="text"><strong id="Camera2currentCount">147</strong><br><small>目前人数</small></div>
                   </div>
                   <div class="statistic d-flex align-items-center bg-white has-shadow">
                     <div class="icon bg-blue"><i class="fa fa-circle-thin"></i></div>
-                    <div class="text"><strong>147</strong><br><small>预测未来5分钟内人数</small></div>
+                    <div class="text"><strong id="Camera2prediction">147</strong><br><small>预测未来5分钟内人数</small></div>
                   </div>
+                  <div class="articles card">
+                  	<div class="card-body no-padding">
+                      <div class="item d-flex align-items-center">
+                        <div class="image"><img src="img/avatar-1.jpg" alt="..." class="img-fluid rounded-circle"></div>
+                        <div class="text"><a href="#">
+                            <h3 class="h5">Security Officer</h3></a><small>Tel: 123456789</small></div>
+                      </div>
+                     </div>
+                   </div>
                 </div>
                 <!-- Line Chart            -->
                 <div class="chart col-lg-5 col-12">
                   <div class="line-chart bg-white d-flex align-items-center justify-content-center has-shadow">
                     <!-- <canvas id="lineCahrt"></canvas> -->
                     
-                    <video id="my-video" class="video-js" controls preload="auto" width="600" height="400" poster="img/mockup1.jpg"
+                    <video id="my-video2" class="video-js" controls preload="auto" width="600" height="400" poster="img/mockup1.jpg"
                       data-setup="{}">
-                      <source src="rtmp://192.168.43.165:1935/live/home" type="rtmp/flv"> </p>
+                      <source src="rtmp://localhost:1935/live/home" type="rtmp/flv"> </p>
                     </video>
                   </div>
                 </div>
@@ -323,7 +341,7 @@
                       <h3 class="h4">近十分钟人流量</h3>
                     </div>
                     <div class="card-body">
-                      <canvas id="lineChartExamplelbk"></canvas>
+                      <canvas id="lineChart2"></canvas>
                     </div>
                   </div>
                 </div>
@@ -370,7 +388,30 @@
     <script>
         setInterval("cg2.innerHTML=new Date().toLocaleString()",1000);
     </script>
-    <!-- Main File-->
+    <script src="./vendor/jquery/jquery.min.js"></script>
+	<script>
+		function reloadView(x) {
+			$.ajax({
+				type : 'GET', // 请求类型, 默认为 GET
+				url : "PeopleCount", // 	必需。规定把请求发送到哪个 URL。
+				//data: "info="+value, // 可选。映射或字符串值。规定连同请求发送到服务器的数据。
+				success : function(result) { // 可选。请求成功时执行的回调函数。
+					// 展示结果
+					var resultArr = result.split(",");
+					$("#Camera1historyHighest").html(resultArr[0]);
+					$("#Camera1hourHighest").html(resultArr[1]);
+					$("#Camera1currentCount").html(resultArr[2]);
+					$("#Camera1prediction").html(resultArr[3]);
+					$("#Camera2historyHighest").html(resultArr[4]);
+					$("#Camera2hourHighest").html(resultArr[5]);
+					$("#Camera2currentCount").html(resultArr[6]);
+					$("#Camera2prediction").html(resultArr[7]);
+				}
+			});
+		};
+		setInterval('reloadView()', 500);
+	</script>
+	<!-- Main File-->
     <script src="js/front.js"></script>
   </body>
 </html>
