@@ -219,31 +219,43 @@
                       <div class="item d-flex align-items-center">
                         <div class="image"><img src="img/avatar-1.jpg" alt="..." class="img-fluid rounded-circle"></div>
                         <div class="text"><a href="#">
-                            <h3 class="h5">Security Officer</h3></a><small>Tel: 123456789</small></div>
+                            <h3 class="h5">Security Officer 1</h3></a><small>Tel: 18351567516</small></div>
                       </div>
                      </div>
                    </div>
                 </div>
-                <!-- Line Chart            -->
-                <div class="chart col-lg-5 col-12">
-                  <div class="line-chart bg-white d-flex align-items-center justify-content-center has-shadow">
-                    <!-- <canvas id="lineCahrt"></canvas> -->
-                    
-                    <video id="my-video1" class="video-js" controls preload="auto" width="600" height="400" poster="img/mockup1.jpg"
-                      data-setup="{}">
-                      <source src="rtmp://localhost:1935/live/home" type="rtmp/flv"> </p>
-                    </video>
-                  </div>
-                </div>
-
                 <div class="chart col-lg-5 col-12">
                   <div class="line-chart-example card">
-                    <div class="card-close">
-                      <div class="dropdown">
-                        <button type="button" id="closeCard1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
-                        <div aria-labelledby="closeCard1" class="dropdown-menu dropdown-menu-right has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a></div>
-                      </div>
+                    <!-- <canvas id="lineCahrt"></canvas> -->
+                    <div class="card-header d-flex align-items-center">
+                      <h3 class="h4">监控视频</h3>
                     </div>
+                    <div class="card-body">
+                      <video id="my-video1" class="video-js" controls preload="auto" width="600" height="400" poster="img/mockup1.jpg"
+                      data-setup="{}">
+                      <source src="rtmp://localhost:1935/live/home" type="rtmp/flv"> </p>
+                      </video>
+                    </div>
+                  </div>
+               </div>
+
+                <div class="chart col-lg-5 col-12">
+                  <div class="card">
+                    <div class="card-header d-flex align-items-center">
+                      <h3 class="h4" id="camera1CurrentThreshole">当前阈值：10</h3>
+                    </div>
+                    <div class="card-body">
+                      <div class="form-group">
+                         <div class="input-group">
+                            <input id="camera1Threshold" type="text" class="form-control" placeholder="大于零的数字">
+                              <div class="input-group-append">
+                                <button type="button" onclick="settingCamera1()" class="btn btn-primary">Go!</button>
+                              </div>
+                         </div>
+                       </div>
+                    </div>
+                  </div>
+                  <div class="line-chart-example card">
                     <div class="card-header d-flex align-items-center">
                       <h3 class="h4">近十分钟人流量</h3>
                     </div>
@@ -312,31 +324,44 @@
                       <div class="item d-flex align-items-center">
                         <div class="image"><img src="img/avatar-1.jpg" alt="..." class="img-fluid rounded-circle"></div>
                         <div class="text"><a href="#">
-                            <h3 class="h5">Security Officer</h3></a><small>Tel: 123456789</small></div>
+                            <h3 class="h5">Security Officer 2</h3></a><small>Tel: 13798561254</small></div>
                       </div>
                      </div>
                    </div>
                 </div>
                 <!-- Line Chart            -->
                 <div class="chart col-lg-5 col-12">
-                  <div class="line-chart bg-white d-flex align-items-center justify-content-center has-shadow">
+                  <div class="line-chart-example card">
                     <!-- <canvas id="lineCahrt"></canvas> -->
-                    
-                    <video id="my-video2" class="video-js" controls preload="auto" width="600" height="400" poster="img/mockup1.jpg"
+                    <div class="card-header d-flex align-items-center">
+                      <h3 class="h4">监控视频</h3>
+                    </div>
+                    <div class="card-body">
+                      <video id="my-video2" class="video-js" controls preload="auto" width="600" height="400" poster="img/mockup1.jpg"
                       data-setup="{}">
                       <source src="rtmp://localhost:1935/live/home" type="rtmp/flv"> </p>
-                    </video>
+                      </video>
+                    </div>
                   </div>
                 </div>
 
                 <div class="chart col-lg-5 col-12">
-                  <div class="line-chart-example card">
-                    <div class="card-close">
-                      <div class="dropdown">
-                        <button type="button" id="closeCard1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
-                        <div aria-labelledby="closeCard1" class="dropdown-menu dropdown-menu-right has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a></div>
-                      </div>
+                  <div class="card">
+                    <div class="card-header d-flex align-items-center">
+                      <h3 class="h4" id="camera2CurrentThreshole">当前阈值：10</h3>
                     </div>
+                    <div class="card-body">
+                      <div class="form-group">
+                         <div class="input-group">
+                            <input type="text" id="camera2Threshold" class="form-control" placeholder="大于零的数字">
+                              <div class="input-group-append">
+                                <button type="button" onclick="settingCamera2()" class="btn btn-primary">Go!</button>
+                              </div>
+                         </div>
+                       </div>
+                    </div>
+                  </div>
+                  <div class="line-chart-example card">
                     <div class="card-header d-flex align-items-center">
                       <h3 class="h4">近十分钟人流量</h3>
                     </div>
@@ -382,13 +407,13 @@
     <script src="vendor/jquery-validation/jquery.validate.min.js"></script>
     <script src="js/charts-home.js"></script>
     <script src="js/charts-custom.js"></script>
+    <script src="js/front.js"></script>
     <script>
         setInterval("cg.innerHTML=new Date().toLocaleString()",1000);
     </script>
     <script>
         setInterval("cg2.innerHTML=new Date().toLocaleString()",1000);
     </script>
-    <script src="./vendor/jquery/jquery.min.js"></script>
 	<script>
 		function reloadView(x) {
 			$.ajax({
@@ -410,8 +435,34 @@
 			});
 		};
 		setInterval('reloadView()', 500);
+		
+		function settingCamera1(){
+			var value = document.getElementById("camera1Threshold").value;
+			$.ajax({
+				type : 'POST', // 请求类型, 默认为 GET
+				url : "ThresholeSetting", // 	必需。规定把请求发送到哪个 URL。
+				data: {Threshole: "camera1" + value}, 
+				success : function(result) { // 可选。请求成功时执行的回调函数。
+					$("#camera1CurrentThreshole").html("当前阈值：" + result + "人");
+					document.getElementById("camera1Threshold").value = "";
+				}
+			});
+		};
+		
+		function settingCamera2(){
+			var value = document.getElementById("camera2Threshold").value;
+			$.ajax({
+				type : 'POST', 
+				url : "ThresholeSetting", 
+				data: {Threshole: "camera2" + value}, 
+				success : function(result) {
+					$("#camera2CurrentThreshole").html("当前阈值：" + result + "人");
+					document.getElementById("camera2Threshold").value = "";
+				}
+			});
+		};
 	</script>
 	<!-- Main File-->
-    <script src="js/front.js"></script>
+    
   </body>
 </html>

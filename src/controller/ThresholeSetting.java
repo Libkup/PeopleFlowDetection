@@ -1,27 +1,23 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class PeopleCount
+ * Servlet implementation class ThresholeSetting
  */
-@WebServlet("/PeopleCount")
-public class PeopleCount extends HttpServlet {
+@WebServlet("/ThresholeSetting")
+public class ThresholeSetting extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private static int count = 1;
-    private static int a = 10000;
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PeopleCount() {
+    public ThresholeSetting() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,21 +27,25 @@ public class PeopleCount extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-//		PrintWriter out = response.getWriter();
-//		out.write();
-//        out.flush();
-//        out.close();
-        response.getWriter().print(count++ + "," + a--);
-//        System.out.println(count + "," + a);
-//		response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+//		System.out.println((String)request.getParameter("Threshole"));
+		String threshole = (String)request.getParameter("Threshole");
+		if(threshole.startsWith("camera1")){
+			threshole = threshole.substring(7, threshole.length());
+			//此处继续写，将threshole存到数据库和session
+			response.getWriter().print(threshole);//后期该为从session返回值
+		}else if(threshole.startsWith("camera2")){
+			threshole = threshole.substring(7, threshole.length());
+			//此处继续写，将threshole存到数据库
+			response.getWriter().print(threshole);
+		}
+		
 	}
 
 }
