@@ -422,6 +422,7 @@
 				//data: "info="+value, // 可选。映射或字符串值。规定连同请求发送到服务器的数据。
 				success : function(result) { // 可选。请求成功时执行的回调函数。
 					// 展示结果
+					console.log(result)
 					var resultArr = result.split(",");
 					$("#Camera1historyHighest").html(resultArr[0]);
 					$("#Camera1hourHighest").html(resultArr[1]);

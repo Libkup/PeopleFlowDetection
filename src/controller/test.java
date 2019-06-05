@@ -1,8 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,16 +9,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class PeopleCount
+ * Servlet implementation class test
  */
-@WebServlet("/PeopleCount")
-public class PeopleCount extends HttpServlet {
+@WebServlet("/test")
+public class test extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static String peopleCount = "";
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PeopleCount() {
+    public test() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,15 +28,9 @@ public class PeopleCount extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-//		PrintWriter out = response.getWriter();
-//		out.write();
-//        out.flush();
-//        out.close();
-		
+		HttpSession session = request.getSession();
 //		System.out.println(session.getAttribute("peopleCount"));
-        response.getWriter().print(peopleCount);
-//        System.out.println(count + "," + a);
-//		response.getWriter().append("Served at: ").append(request.getContextPath());
+        response.getWriter().print(session.getAttribute("peopleCount") + "," + "456");
 	}
 
 	/**
@@ -46,7 +38,10 @@ public class PeopleCount extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		peopleCount = request.getParameter("peopleNum");
+//		String peopleCount = request.getParameter("peopleNum");
+//		HttpSession session = request.getSession();
+//		session.setAttribute("peopleCount", peopleCount);
+//		System.out.println(peopleCount);
 	}
 
 }
