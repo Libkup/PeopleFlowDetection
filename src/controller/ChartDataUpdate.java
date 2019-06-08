@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import util.Client;
+
 /**
  * Servlet implementation class ChartDataUpdate
  */
@@ -30,11 +32,15 @@ public class ChartDataUpdate extends HttpServlet {
 		// TODO Auto-generated method stub
 		String whichChart = request.getParameter("which");
 		String datas = "";
+		Client client = new Client();
 		if(whichChart != null && whichChart.equals("1")){
-			for(int i = 0;i < data1.length-1; i++){
-				datas = datas + data1[i] +",";
-			}
-			datas= datas + data1[data1.length-1];
+//			for(int i = 0;i < data1.length-1; i++){
+//				datas = datas + data1[i] +",";
+//			}
+//			datas= datas + data1[data1.length-1];
+			datas = client.getValues(1);
+//			System.out.println(datas);
+			System.out.println(datas);
 			response.getWriter().print(datas);
 		}else if(whichChart != null && whichChart.equals("2")){
 			for(int i = 0;i < data2.length-1; i++){

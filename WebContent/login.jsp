@@ -1,5 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<% String isMatch = request.getParameter("isMatch");
+%>
 <!DOCTYPE html>
 <html>
   <head>
@@ -47,7 +49,7 @@
             <div class="col-lg-6 bg-white">
               <div class="form d-flex align-items-center">
                 <div class="content">
-                  <form method="post" class="form-validate">
+                  <form action="LoginServlet" method="post" class="form-validate">
                     <div class="form-group">
                       <input id="login-username" type="text" name="loginUsername" required data-msg="Please enter your username" class="input-material">
                       <label for="login-username" class="label-material">User Name</label>
@@ -55,20 +57,24 @@
                     <div class="form-group">
                       <input id="login-password" type="password" name="loginPassword" required data-msg="Please enter your password" class="input-material">
                       <label for="login-password" class="label-material">Password</label>
-                    </div><a id="login" href="index.html" class="btn btn-primary">Login</a>
+                      <br><br><br><br>
+                      <input type="submit" value="Login" id="button" class="btn btn-primary">
+                      <br><br>
+                   <!--   </div><a id="login" href="index.html" class="btn btn-primary">Login</a>
+                   -->
                     <!-- This should be submit button but I replaced it with <a> for demo purposes-->
-                  </form><a href="#" class="forgot-pass">Forgot Password?</a><br><small>Do not have an account? </small><a href="register.html" class="signup">Signup</a>
+                  </form><a href="#" class="forgot-pass">Forgot Password?</a><br><small>Do not have an account? </small><a href="register.jsp" class="signup">Signup</a>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <!--  
       <div class="copyrights text-center">
-        <p>Design by <a href="#" class="external">Bootstrapious</a>
-          <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
-        </p>
+       <p>Copyright &copy; 2019.西岳轩昂 All rights reserved.</p>
       </div>
+      -->
     </div>
     <!-- JavaScript files-->
     <script src="vendor/jquery/jquery.min.js"></script>
@@ -79,5 +85,6 @@
     <script src="vendor/jquery-validation/jquery.validate.min.js"></script>
     <!-- Main File-->
     <script src="js/front.js"></script>
+    <script src="js/login.js"></script>
   </body>
 </html>

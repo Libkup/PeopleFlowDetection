@@ -6,21 +6,20 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import util.Client;
 
 /**
- * Servlet implementation class ThresholeSetting
+ * Servlet implementation class UpdateThreshold
  */
-@WebServlet("/ThresholeSetting")
-public class ThresholeSetting extends HttpServlet {
+@WebServlet("/UpdateThreshold")
+public class UpdateThreshold extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ThresholeSetting() {
+    public UpdateThreshold() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,25 +36,11 @@ public class ThresholeSetting extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		System.out.println((String)request.getParameter("Threshole"));
-		Client client = new Client();
-		String threshole = (String)request.getParameter("Threshole");
-		HttpSession session = request.getSession();
-		if(threshole.startsWith("camera1")){
-			threshole = threshole.substring(7, threshole.length());
-			client.updateThreshold(1, Integer.parseInt(threshole));
-			session.setAttribute("camera1Threshole", threshole);
-			//此处继续写，将threshole存到数据库和session
-			response.getWriter().print(threshole);//后期该为从session返回值
-		}else if(threshole.startsWith("camera2")){
-			threshole = threshole.substring(7, threshole.length());
-			client.updateThreshold(2, Integer.parseInt(threshole));
-			session.setAttribute("camera2Threshole", threshole);
-			//此处继续写，将threshole存到数据库
-			response.getWriter().print(threshole);
-		}
-		
+		// TODO Auto-generated method stub
+		//doGet(request, response);
+		updateThreshold(request, response);
 	}
+	
 	
 	private void updateThreshold(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub

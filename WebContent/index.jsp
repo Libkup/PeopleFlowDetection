@@ -112,7 +112,7 @@
                   </ul>
                 </li> -->
                 <!-- Logout    -->
-                <li class="nav-item"><a href="login.html" class="nav-link logout"> <span class="d-none d-sm-inline">Logout</span><i class="fa fa-sign-out"></i></a></li>
+                <li class="nav-item"><a href="LogoutServlet" class="nav-link logout"> <span class="d-none d-sm-inline">Logout</span><i class="fa fa-sign-out"></i></a></li>
               </ul>
             </div>
           </div>
@@ -125,8 +125,8 @@
           <div class="sidebar-header d-flex align-items-center">
             <div class="avatar"><img src="img/avatar-1.jpg" alt="..." class="img-fluid rounded-circle"></div>
             <div class="title">
-              <h1 class="h4">Li Benkang</h1>
-              <p>管理员1</p>
+              <h1 class="h4">${sessionScope.loginUsername}</h1>
+              <p>email: ${sessionScope.email}</p>
             </div>
           </div>
           <!-- Sidebar Navidation Menus-->
@@ -199,6 +199,10 @@
                 <!-- Statistics -->
                 <div class="statistics col-lg-2 col-12">
                   <div class="statistic d-flex align-items-center bg-white has-shadow">
+                    <div class="icon bg-orange"><i class="fa fa-paper-plane-o"></i></div>
+                    <div class="text"><strong id="Camera1currentCount">147</strong><br><small>当前人数</small></div>
+                  </div>
+                  <div class="statistic d-flex align-items-center bg-white has-shadow">
                     <div class="icon bg-red"><i class="fa fa-tasks"></i></div>
                     <div class="text"><strong id="Camera1historyHighest">234</strong><br><small>历史最高人数</small></div>
                   </div>
@@ -206,10 +210,7 @@
                     <div class="icon bg-green"><i class="fa fa-calendar-o"></i></div>
                     <div class="text"><strong id="Camera1hourHighest">152</strong><br><small>近一小时最高人数</small></div>
                   </div>
-                  <div class="statistic d-flex align-items-center bg-white has-shadow">
-                    <div class="icon bg-orange"><i class="fa fa-paper-plane-o"></i></div>
-                    <div class="text"><strong id="Camera1currentCount">147</strong><br><small>当前人数</small></div>
-                  </div>
+                  
                   <div class="statistic d-flex align-items-center bg-white has-shadow">
                     <div class="icon bg-blue"><i class="fa fa-circle-thin"></i></div>
                     <div class="text"><strong id="Camera1prediction">147</strong><br><small>预测未来5分钟内人数</small></div>
@@ -242,7 +243,7 @@
                 <div class="chart col-lg-5 col-12">
                   <div class="card">
                     <div class="card-header d-flex align-items-center">
-                      <h3 class="h4" id="camera1CurrentThreshole">当前阈值：10</h3>
+                      <h3 class="h4" id="camera1CurrentThreshole">当前阈值：${sessionScope.camera1Threshole}人</h3>
                     </div>
                     <div class="card-body">
                       <div class="form-group">
@@ -304,16 +305,16 @@
                 <!-- Statistics -->
                 <div class="statistics col-lg-2 col-12">
                   <div class="statistic d-flex align-items-center bg-white has-shadow">
+                    <div class="icon bg-orange"><i class="fa fa-paper-plane-o"></i></div>
+                    <div class="text"><strong id="Camera2currentCount">147</strong><br><small>目前人数</small></div>
+                  </div>
+                  <div class="statistic d-flex align-items-center bg-white has-shadow">
                     <div class="icon bg-red"><i class="fa fa-tasks"></i></div>
                     <div class="text"><strong id="Camera2historyHighest">234</strong><br><small>历史最高人数</small></div>
                   </div>
                   <div class="statistic d-flex align-items-center bg-white has-shadow">
                     <div class="icon bg-green"><i class="fa fa-calendar-o"></i></div>
                     <div class="text"><strong id="Camera2hourHighest">152</strong><br><small>近一小时最高人数</small></div>
-                  </div>
-                  <div class="statistic d-flex align-items-center bg-white has-shadow">
-                    <div class="icon bg-orange"><i class="fa fa-paper-plane-o"></i></div>
-                    <div class="text"><strong id="Camera2currentCount">147</strong><br><small>目前人数</small></div>
                   </div>
                   <div class="statistic d-flex align-items-center bg-white has-shadow">
                     <div class="icon bg-blue"><i class="fa fa-circle-thin"></i></div>
@@ -348,7 +349,7 @@
                 <div class="chart col-lg-5 col-12">
                   <div class="card">
                     <div class="card-header d-flex align-items-center">
-                      <h3 class="h4" id="camera2CurrentThreshole">当前阈值：10</h3>
+                      <h3 class="h4" id="camera2CurrentThreshole">当前阈值：${sessionScope.camera2Threshole}人</h3>
                     </div>
                     <div class="card-body">
                       <div class="form-group">
@@ -416,22 +417,34 @@
     </script>
 	<script>
 		function reloadView(x) {
+			
 			$.ajax({
 				type : 'GET', // 请求类型, 默认为 GET
 				url : "PeopleCount", // 	必需。规定把请求发送到哪个 URL。
 				//data: "info="+value, // 可选。映射或字符串值。规定连同请求发送到服务器的数据。
 				success : function(result) { // 可选。请求成功时执行的回调函数。
 					// 展示结果
-					console.log(result)
+					//console.log(result)
 					var resultArr = result.split(",");
 					$("#Camera1historyHighest").html(resultArr[0]);
 					$("#Camera1hourHighest").html(resultArr[1]);
 					$("#Camera1currentCount").html(resultArr[2]);
 					$("#Camera1prediction").html(resultArr[3]);
-					$("#Camera2historyHighest").html(resultArr[4]);
-					$("#Camera2hourHighest").html(resultArr[5]);
-					$("#Camera2currentCount").html(resultArr[6]);
-					$("#Camera2prediction").html(resultArr[7]);
+					var th = new Number(resultArr[4]);
+					console.log(th);
+					$("#Camera2historyHighest").html(resultArr[5]);
+					$("#Camera2hourHighest").html(resultArr[6]);
+					$("#Camera2currentCount").html(resultArr[7]);
+					$("#Camera2prediction").html(resultArr[8]);
+					if(resultArr[2] >= th){
+						var oPtxt=document.getElementById("Camera1currentCount");
+						oPtxt.style.fontSize='50px';
+						oPtxt.style.color='red';
+					}else{
+						var oPtxt=document.getElementById("Camera1currentCount");
+						oPtxt.style.fontSize='25px';
+						oPtxt.style.color='black';
+					}
 				}
 			});
 		};
@@ -444,6 +457,7 @@
 				url : "ThresholeSetting", // 	必需。规定把请求发送到哪个 URL。
 				data: {Threshole: "camera1" + value}, 
 				success : function(result) { // 可选。请求成功时执行的回调函数。
+					th = result;
 					$("#camera1CurrentThreshole").html("当前阈值：" + result + "人");
 					document.getElementById("camera1Threshold").value = "";
 				}
