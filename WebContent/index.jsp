@@ -232,7 +232,7 @@
                       <h3 class="h4">监控视频</h3>
                     </div>
                     <div class="card-body">
-                      <video id="my-video1" class="video-js" controls preload="auto" width="600" height="400" poster="img/mockup1.jpg"
+                      <video id="my-video1" class="video-js" controls preload="auto" width="600" height="400" poster="img/timg.jpg"
                       data-setup="{}">
                       <source src="rtmp://localhost:1935/live/home" type="rtmp/flv"> </p>
                       </video>
@@ -338,7 +338,7 @@
                       <h3 class="h4">监控视频</h3>
                     </div>
                     <div class="card-body">
-                      <video id="my-video2" class="video-js" controls preload="auto" width="600" height="400" poster="img/mockup1.jpg"
+                      <video id="my-video2" class="video-js" controls preload="auto" width="600" height="400" poster="img/timg.jpg"
                       data-setup="{}">
                       <source src="rtmp://localhost:1935/live/home" type="rtmp/flv"> </p>
                       </video>

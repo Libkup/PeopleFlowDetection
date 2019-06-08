@@ -15,6 +15,10 @@ import java.util.ArrayList;
  * 
  * @author JG
  */
+/**
+ * @author win10
+ *
+ */
 public class Client {
 //	/**
 //	 * This function is used to get the target data('account' <= 'value') about the
@@ -240,7 +244,7 @@ public class Client {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
 	 * This function is used to update the threshold of target camera
 	 * 
@@ -611,7 +615,7 @@ public class Client {
 		}
 		return predict;
 	}
-	
+
 	/**
 	 * This function is used to get threshold by id
 	 * 
@@ -636,9 +640,7 @@ public class Client {
 		}
 		return threshold;
 	}
-	
-	
-	
+
 	/**
 	 * This function is used to get email by name
 	 * 
@@ -646,7 +648,7 @@ public class Client {
 	 * @return email
 	 */
 	public String getemail(String name) {
-		String email="" ;
+		String email = "";
 		try {
 			Connection conn = DBConn.getINSTANCE().getConnection();
 
@@ -674,7 +676,7 @@ public class Client {
 		ArrayList<Integer> list = new ArrayList<Integer>();
 		try {
 			Connection conn = DBConn.getINSTANCE().getConnection();
-			String sql = "select * from cameralog where id=? and time between date_add(now(), interval - 10.2 minute) and date_add(now(), interval - 9.8 minute)";
+			String sql = "select * from cameralog where id=? and time between date_add(now(), interval - 10.06 minute) and date_add(now(), interval - 9.52 minute)";
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1, id);
 			ResultSet rs = ps.executeQuery();
@@ -691,7 +693,7 @@ public class Client {
 
 			
 
-			sql = "select * from cameralog where id=? and time between date_add(now(), interval - 8.2 minute) and date_add(now(), interval - 7.8 minute)";
+			sql = "select * from cameralog where id=? and time between date_add(now(), interval - 8.06 minute) and date_add(now(), interval - 7.52 minute)";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, id);
 			rs = ps.executeQuery();
@@ -706,7 +708,7 @@ public class Client {
 				list.clear();
 			}
 			
-			sql = "select * from cameralog where id=? and time between date_add(now(), interval - 6.2 minute) and date_add(now(), interval - 5.8 minute)";
+			sql = "select * from cameralog where id=? and time between date_add(now(), interval - 6.06 minute) and date_add(now(), interval - 5.52 minute)";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, id);
 			rs = ps.executeQuery();
@@ -721,7 +723,7 @@ public class Client {
 				list.clear();
 			}
 
-			sql = "select * from cameralog where id=? and time between date_add(now(), interval - 4.2 minute) and date_add(now(), interval - 3.8 minute)";
+			sql = "select * from cameralog where id=? and time between date_add(now(), interval - 4.06 minute) and date_add(now(), interval - 3.52 minute)";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, id);
 			rs = ps.executeQuery();
@@ -736,7 +738,7 @@ public class Client {
 				list.clear();
 			}
 
-			sql = "select * from cameralog where id=? and time between date_add(now(), interval - 2.2 minute) and date_add(now(), interval - 1.8 minute)";
+			sql = "select * from cameralog where id=? and time between date_add(now(), interval - 2.06 minute) and date_add(now(), interval - 1.52 minute)";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, id);
 			rs = ps.executeQuery();
@@ -751,7 +753,7 @@ public class Client {
 				list.clear();
 			}
 
-			sql = "select * from cameralog where id=? and time between date_add(now(), interval - 0.2 minute) and now()";
+			sql = "select * from cameralog where id=? and time between date_add(now(), interval - 0.06 minute) and now()";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, id);
 			rs = ps.executeQuery();
