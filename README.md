@@ -27,3 +27,4 @@ Our users can have access to the system through their browser.
 #### Other
 ##### ffmpeg
 ##### nginx-rtmp
+##### MariaDB DataBase
