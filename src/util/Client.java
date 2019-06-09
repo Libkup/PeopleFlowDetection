@@ -540,73 +540,76 @@ public class Client {
 	 */
 	public int getPredict(int id) {
 		ArrayList<Integer> list = new ArrayList<Integer>();
-		int predict = 0;
+		ArrayList<Integer> list3 = new ArrayList<Integer>();
+		int predict =0;
 		try {
 			Connection conn = DBConn.getINSTANCE().getConnection();
 			String sql = "select * from cameralog where id=? and  time between date_add(now(), interval - 10.5 minute) and date_add(now(), interval - 9.5 minute)";
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1, id);
 			ResultSet rs = ps.executeQuery();
-		    if(!rs.next()) {
-		    	list.add(0);
-		    }
+
 			while (rs.next()) {
-				list.add(rs.getInt("account"));
-				break;
+				list3.add(rs.getInt("account"));
 			}
+			list.add(getBiggest(list3));
+			list3.clear();
 
 			sql = "select * from cameralog where id=? and  time between date_add(now(), interval - 8.5 minute) and date_add(now(), interval - 7.5 minute)";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, id);
 			rs = ps.executeQuery();
-		    if(!rs.next()) {
-		    	list.add(0);
-		    }
+
 			while (rs.next()) {
-				list.add(rs.getInt("account"));
-				break;
+				list3.add(rs.getInt("account"));
 			}
+			list.add(getBiggest(list3));
+			list3.clear();
 
 			sql = "select * from cameralog where id=? and  time between date_add(now(), interval - 6.5 minute) and date_add(now(), interval - 5.5 minute)";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, id);
 			rs = ps.executeQuery();
-		    if(!rs.next()) {
-		    	list.add(0);
-		    }
+			
 			while (rs.next()) {
-				list.add(rs.getInt("account"));
-				break;
+				list3.add(rs.getInt("account"));
 			}
+			list.add(getBiggest(list3));
+			list3.clear();
 
 			sql = "select * from cameralog where id=? and  time between date_add(now(), interval - 4.5 minute) and date_add(now(), interval - 3.5 minute)";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, id);
 			rs = ps.executeQuery();
-		    if(!rs.next()) {
-		    	list.add(0);
-		    }
+
 			while (rs.next()) {
-				list.add(rs.getInt("account"));
-				break;
+				list3.add(rs.getInt("account"));
 			}
+			list.add(getBiggest(list3));
+			list3.clear();
 
 			sql = "select * from cameralog where id=? and  time between date_add(now(), interval - 0.5 minute) and now()";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, id);
 			rs = ps.executeQuery();
-		    if(!rs.next()) {
-		    	list.add(0);
-		    }
+
 			while (rs.next()) {
-				list.add(rs.getInt("account"));
-				break;
+				list3.add(rs.getInt("account"));
 			}
+			list.add(getBiggest(list3));
+			list3.clear();
+			
 			DBConn.closeConnection(conn, ps, rs);
 			int length = list.size();
-			double[] fs = new double[length];
-			for (int i = 0; i < length; i++) {
-				fs[i] = list.get(i);
+			for(int i=length; i<6; i++) {
+				list3.add(0);
+			}
+			double[] fs = new double[6];
+			for (int i = 0; i < list3.size(); i++) {
+				fs[i] = list3.get(i);
+			}
+			for(int i=0; i<length; i++) {
+				fs[i+list3.size()] = list.get(i);
 			}
 			predict = predict(fs);
 
@@ -669,123 +672,111 @@ public class Client {
 	/**
 	 * This function is used to get the information of internals
 	 * 
-	 * @return values [two minutes latter],[now][2 minutes ago],[4 minutes ago],[6 minutes ago],[8 minutes ago],[10 minutes ago]
+	 * @return values [two minutes latter],[now][2 minutes ago],[4 minutes ago],[6
+	 *         minutes ago],[8 minutes ago],[10 minutes ago]
 	 */
 	public String getValues(int id) {
 		String str = "";
+		String result = "";
 		ArrayList<Integer> list = new ArrayList<Integer>();
 		try {
 			Connection conn = DBConn.getINSTANCE().getConnection();
-			String sql = "select * from cameralog where id=? and time between date_add(now(), interval - 10.06 minute) and date_add(now(), interval - 9.52 minute)";
+			String sql = "select account from cameralog where id=? and time between date_add(now(), interval - 10.5 minute) and date_add(now(), interval - 9.52 minute)";
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1, id);
 			ResultSet rs = ps.executeQuery();
-			if(!rs.next()){
-				str = str+"0"+",";
-			}
-			else {
-				while (rs.next()) {
-					list.add(rs.getInt("account"));
-				}
-				str = str + getBiggest(list)+",";
-				list.clear();
-			}
 
-			
+			while (rs.next()) {
+				list.add(rs.getInt("account"));
+			}
+			str = str + getBiggest(list) + ",";
+			list.clear();
 
-			sql = "select * from cameralog where id=? and time between date_add(now(), interval - 8.06 minute) and date_add(now(), interval - 7.52 minute)";
+			sql = "select account from cameralog where id=? and time between date_add(now(), interval - 8.5 minute) and date_add(now(), interval - 7.52 minute)";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, id);
 			rs = ps.executeQuery();
-			if(!rs.next()){
-				str = str+"0"+",";
-			}
-			else {
-				while (rs.next()) {
-					list.add(rs.getInt("account"));
-				}
-				str = str + getBiggest(list)+",";
-				list.clear();
-			}
-			
-			sql = "select * from cameralog where id=? and time between date_add(now(), interval - 6.06 minute) and date_add(now(), interval - 5.52 minute)";
-			ps = conn.prepareStatement(sql);
-			ps.setInt(1, id);
-			rs = ps.executeQuery();
-			if(!rs.next()){
-				str = str+"0"+",";
-			}
-			else {
-				while (rs.next()) {
-					list.add(rs.getInt("account"));
-				}
-				str = str + getBiggest(list)+",";
-				list.clear();
-			}
 
-			sql = "select * from cameralog where id=? and time between date_add(now(), interval - 4.06 minute) and date_add(now(), interval - 3.52 minute)";
-			ps = conn.prepareStatement(sql);
-			ps.setInt(1, id);
-			rs = ps.executeQuery();
-			if(!rs.next()){
-				str = str+"0"+",";
+			while (rs.next()) {
+				list.add(rs.getInt("account"));
 			}
-			else {
-				while (rs.next()) {
-					list.add(rs.getInt("account"));
-				}
-				str = str + getBiggest(list)+",";
-				list.clear();
-			}
+			str = str + getBiggest(list) + ",";
+			list.clear();
 
-			sql = "select * from cameralog where id=? and time between date_add(now(), interval - 2.06 minute) and date_add(now(), interval - 1.52 minute)";
+			sql = "select account from cameralog where id=? and time between date_add(now(), interval - 6.5 minute) and date_add(now(), interval - 5.52 minute)";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, id);
 			rs = ps.executeQuery();
-			if(!rs.next()){
-				str = str+"0"+",";
-			}
-			else {
-				while (rs.next()) {
-					list.add(rs.getInt("account"));
-				}
-				str = str + getBiggest(list)+",";
-				list.clear();
-			}
 
-			sql = "select * from cameralog where id=? and time between date_add(now(), interval - 0.06 minute) and now()";
+			while (rs.next()) {
+				list.add(rs.getInt("account"));
+			}
+			str = str + getBiggest(list) + ",";
+			list.clear();
+
+			sql = "select account from cameralog where id=? and time between date_add(now(), interval - 4.5 minute) and date_add(now(), interval - 3.52 minute)";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, id);
 			rs = ps.executeQuery();
-			if(!rs.next()){
-				str = str+"0"+",";
+
+			while (rs.next()) {
+				list.add(rs.getInt("account"));
 			}
-			else {
-				while (rs.next()) {
-					list.add(rs.getInt("account"));
-				}
-				str = str + getBiggest(list)+",";
-				list.clear();
+			str = str + getBiggest(list) + ",";
+			list.clear();
+
+			sql = "select account from cameralog where id=? and time between date_add(now(), interval - 2.5 minute) and date_add(now(), interval - 1.52 minute)";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, id);
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+				list.add(rs.getInt("account"));
 			}
-			
+			str = str + getBiggest(list) + ",";
+			list.clear();
+
+			sql = "select account from cameralog where id=? and time between date_add(now(), interval - 0.1 minute) and now()";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, id);
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+				list.add(rs.getInt("account"));
+			}
+			str = str + getBiggest(list) + ",";
+			list.clear();
+
 			DBConn.closeConnection(conn, ps, rs);
-			str += String.valueOf(getPredict(id));
+			
+			
+			String [] strs = str.split(",");
+			int length = strs.length;
+			for(int j=length; j<6; j++) {
+				result = "0,"+result;
+			}
+			for(int j=0; j<length; j++) {
+				result= result + strs[j] + ",";
+			}
+
+			result =result+ String.valueOf(getPredict(id));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return str;
+		return result;
 	}
 
 	/**
 	 * This function is used to get biggest number of list.
+	 * 
 	 * @param list
 	 * @return biggest
 	 */
 	public int getBiggest(ArrayList<Integer> list) {
 		int biggest = 0;
 		int length = list.size();
-		for(int i=0; i<length; i++) {
-			if(list.get(i)>=biggest) {
+		for (int i = 0; i < length; i++) {
+			if (list.get(i) >= biggest) {
 				biggest = list.get(i);
 			}
 		}
