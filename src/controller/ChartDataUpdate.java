@@ -40,7 +40,6 @@ public class ChartDataUpdate extends HttpServlet {
 //			datas= datas + data1[data1.length-1];
 			datas = client.getValues(1);
 //			System.out.println(datas);
-			System.out.println(datas);
 			response.getWriter().print(datas);
 		}else if(whichChart != null && whichChart.equals("2")){
 			for(int i = 0;i < data2.length-1; i++){
