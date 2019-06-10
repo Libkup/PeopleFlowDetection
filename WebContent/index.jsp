@@ -189,7 +189,7 @@
                   
                   <div class="statistic d-flex align-items-center bg-white has-shadow">
                     <div class="icon bg-blue"><i class="fa fa-circle-thin"></i></div>
-                    <div class="text"><strong id="Camera1prediction">147</strong><br><small>预测未来5分钟内人数</small></div>
+                    <div class="text"><strong id="Camera1prediction">147</strong><br><small>预测未来2分钟内人数</small></div>
                   </div>
                   <div class="articles card">
                   	<div class="card-body no-padding">
@@ -294,7 +294,7 @@
                   </div>
                   <div class="statistic d-flex align-items-center bg-white has-shadow">
                     <div class="icon bg-blue"><i class="fa fa-circle-thin"></i></div>
-                    <div class="text"><strong id="Camera2prediction">147</strong><br><small>预测未来5分钟内人数</small></div>
+                    <div class="text"><strong id="Camera2prediction">147</strong><br><small>预测未来2分钟内人数</small></div>
                   </div>
                   <div class="articles card">
                   	<div class="card-body no-padding">

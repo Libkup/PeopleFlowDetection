@@ -736,7 +736,7 @@ public class Client {
 			str = str + getBiggest(list) + ",";
 			list.clear();
 
-			sql = "select account from cameralog where id=? and time between date_add(now(), interval - 0.1 minute) and now()";
+			sql = "select account from cameralog where id=? and time between date_add(now(), interval - 4 second) and now()";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, id);
 			rs = ps.executeQuery();

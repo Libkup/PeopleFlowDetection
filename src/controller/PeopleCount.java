@@ -53,7 +53,6 @@ public class PeopleCount extends HttpServlet {
 		highest_hour2 = client.getHighest_hour(2);
 		account2 = client.getAccount(2);
 		predict2 = client.getPredict(2);
-		
 //		int highest3 = client.getHighest(3);
 //		int highest_hour3 = client.getHighest_hour(3);
 //		int account3 = client.getAccount(3);
